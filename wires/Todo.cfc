@@ -22,7 +22,7 @@ component extends="cbwire.models.Component" {
 			return task.id == taskId;
 		} );
 
-		data.tasks[ taskIndex ].done = true;
+		data.tasks[ taskIndex ].done = !data.tasks[ taskIndex ].done;
 	}
 
 }
