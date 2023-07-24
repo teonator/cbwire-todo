@@ -11,6 +11,7 @@ component extends="cbwire.models.Component" {
 		ArrayAppend( data.tasks, {
 			  "id"   : CreateUUID()
 			, "label": data.task
+			, "done" : false
 		} );
 
 		data.task = "";
