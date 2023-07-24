@@ -14,10 +14,10 @@
 					<ul class="list-group">
 						<cfloop array="#args.tasks#" index="task">
 							<li class="list-group-item list-group-item-action d-flex align-items-center">
-								<a class="btn btn-sm btn-outline-secondary me-2">
+								<a wire:click.prevent="editTask( '#task.id#' )" class="btn btn-sm me-2 <cfif task.done>btn-outline-success<cfelse>btn-outline-secondary</cfif>">
 									<i class="fas fa-check <cfif not task.done>text-white</cfif>"></i>
 								</a>
-								<p class="flex-grow-1 text-secondary mb-0 <cfif task.done>text-decoration-line-through</cfif>">#task.label#</p>
+								<p class="flex-grow-1 mb-0 text-secondary <cfif task.done>text-decoration-line-through</cfif>">#task.label#</p>
 							</li>
 						</cfloop>
 					</ul>

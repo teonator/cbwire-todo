@@ -17,4 +17,12 @@ component extends="cbwire.models.Component" {
 		data.task = "";
 	}
 
+	function editTask( taskId ) {
+		var taskIndex = ArrayFind( data.tasks, function( task ) {
+			return task.id == taskId;
+		} );
+
+		data.tasks[ taskIndex ].done = true;
+	}
+
 }
