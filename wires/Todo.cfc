@@ -13,14 +13,22 @@ component extends="cbwire.models.Component" {
 		}
 	};
 
-	function addTask() {
-		ArrayAppend( data.tasks, {
-			  "id"   : CreateUUID()
-			, "label": data.task
-			, "done" : false
-		} );
+	constraints = {
+		 "task": { required: true }
+	};
 
-		data.task = "";
+	function addTask() {
+		var result = validate();
+
+		if ( !result.hasErrors() ) {
+			ArrayAppend( data.tasks, {
+				  "id"   : CreateUUID()
+				, "label": data.task
+				, "done" : false
+			} );
+
+			data.task = "";
+		}
 	}
 
 	function editTask( taskId ) {
@@ -37,6 +45,11 @@ component extends="cbwire.models.Component" {
 		return ArrayFind( data.tasks, function( task ) {
 			return task.id == taskId;
 		} );
+	}
+
+	// Alias
+	function validate() {
+		return _validate();
 	}
 
 }
