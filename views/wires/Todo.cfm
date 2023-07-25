@@ -7,19 +7,19 @@
 				<div class="card-body p-5">
 
 					<form class="d-flex mb-1">
-						<input wire:model="task" type="text" class="form-control me-2 <cfif validation.hasErrors( "task" )>is-invalid</cfif>" placeholder="New task..." />
+						<input wire:model="task" type="text" class="form-control me-2 <cfif args.hydrated and validation.hasErrors( "task" )>is-invalid</cfif>" placeholder="New task..." />
 						<button wire:click.prevent="addTask" type="submit" class="btn btn-primary"><i class="fas fa-plus"></i></button>
 					</form>
 
-					<cfif validation.hasErrors( "task" )>
-						<div class="mb-3">
+					<cfif args.hydrated and validation.hasErrors( "task" )>
+						<div>
 							<cfloop array="#validation.getAllErrors( "task" )#" index="error">
-								<p class="text-danger">#error#</p>
+								<span class="text-danger">#error#</span>
 							</cfloop>
 						</div>
 					</cfif>
 
-					<h4>Tasks (#args.computed.taskCounter()#)</h4>
+					<h4 class="mt-3">Tasks (#args.computed.taskCounter()#)</h4>
 
 					<ul class="list-group">
 						<cfloop array="#args.tasks#" index="task">

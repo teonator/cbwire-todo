@@ -3,8 +3,9 @@ component extends="cbwire.models.Component" {
 	template = "/views/wires/Todo.cfm";
 
 	data = {
-		  "tasks": []
-		, "task" : ""
+		  "hydrated": false
+		, "tasks"   : []
+		, "task"    : ""
 	};
 
 	computed = {
@@ -45,6 +46,10 @@ component extends="cbwire.models.Component" {
 		return ArrayFind( data.tasks, function( task ) {
 			return task.id == taskId;
 		} );
+	}
+
+	function onHydrate( event, rc, prc, parameters ) {
+		data.hydrated = true;
 	}
 
 	// Alias
