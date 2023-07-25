@@ -36,10 +36,14 @@ component extends="cbwire.models.Component" {
 		var taskIndex = _getTaskIndex( taskId );
 
 		data.tasks[ taskIndex ].done = !data.tasks[ taskIndex ].done;
+
+		data.hydrated = false;
 	}
 
 	function deleteTask( taskId ) {
 		ArrayDeleteAt( data.tasks, _getTaskIndex( taskId ) );
+
+		data.hydrated = false;
 	}
 
 	function _getTaskIndex( taskId ) {
