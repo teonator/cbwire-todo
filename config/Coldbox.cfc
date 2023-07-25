@@ -23,7 +23,7 @@ component {
 			reinitKey                : "fwreinit",
 			handlersIndexAutoReload  : true,
 			// Implicit Events
-			defaultEvent             : "",
+			defaultEvent             : "Todo",
 			requestStartHandler      : "Main.onRequestStart",
 			requestEndHandler        : "",
 			applicationStartHandler  : "Main.onAppInit",
