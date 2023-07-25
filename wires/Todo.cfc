@@ -14,7 +14,7 @@ component extends="cbwire.models.Component" {
 	};
 
 	constraints = {
-		 "task": { required: true }
+		 "task": { required: true, requiredMessage="Please enter the {field}." }
 	};
 
 	function addTask() {
