@@ -17,7 +17,8 @@
 
 						<form class="d-flex mb-1">
 							<input wire:model="task" type="text" class="form-control me-2 <cfif args.hydrated and validation.hasErrors( "task" )>is-invalid</cfif>" placeholder="New task..." />
-							<button wire:click.prevent="addTask" type="submit" class="btn btn-primary"><i class="fas fa-plus"></i></button>
+							<button type="submit" disabled class="d-none">Prevent form submit from enter</button>
+							<button wire:click.prevent="addTask" class="btn btn-primary"><i class="fas fa-plus"></i></button>
 						</form>
 
 						<cfif args.hydrated and validation.hasErrors( "task" )>
