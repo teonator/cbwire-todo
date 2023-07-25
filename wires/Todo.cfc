@@ -14,9 +14,18 @@ component extends="cbwire.models.Component" {
 		}
 	};
 
+	listeners = {
+		  "checkTask": "editTask"
+		, "trashTask": "deleteTask"
+	};
+
 	constraints = {
 		 "task": { required: true, requiredMessage="Please enter the {field}." }
 	};
+
+	function onHydrate( event, rc, prc, parameters ) {
+		data.hydrated = true;
+	}
 
 	function addTask() {
 		var result = validate();
@@ -50,10 +59,6 @@ component extends="cbwire.models.Component" {
 		return ArrayFind( data.tasks, function( task ) {
 			return task.id == taskId;
 		} );
-	}
-
-	function onHydrate( event, rc, prc, parameters ) {
-		data.hydrated = true;
 	}
 
 	// Alias
