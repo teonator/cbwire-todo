@@ -11,6 +11,8 @@
 						<button wire:click.prevent="addTask" type="submit" class="btn btn-primary"><i class="fas fa-plus"></i></button>
 					</form>
 
+					<h4>Tasks (#args.computed.taskCounter()#)</h4>
+
 					<ul class="list-group">
 						<cfloop array="#args.tasks#" index="task">
 							<li class="list-group-item list-group-item-action d-flex align-items-center">

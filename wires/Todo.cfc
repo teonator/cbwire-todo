@@ -7,6 +7,12 @@ component extends="cbwire.models.Component" {
 		, "task" : ""
 	};
 
+	computed = {
+		"taskCounter": function() {
+			return ArrayLen( data.tasks );
+		}
+	};
+
 	function addTask() {
 		ArrayAppend( data.tasks, {
 			  "id"   : CreateUUID()
