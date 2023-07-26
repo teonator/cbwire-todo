@@ -10,12 +10,12 @@ component extends="cbwire.models.Component" {
 	};
 
 	computed = {
-		  "taskCounter": function() {
-			return ArrayLen( data.tasks );
+		  "taskCounter": function( taskFilter="" ) {
+			return ArrayLen( computed.taskFilter( taskFilter ) );
 		  }
-		, "taskFilter": function() {
+		, "taskFilter": function( taskFilter="" ) {
 			return ArrayFilter( data.tasks, function( task ) {
-				switch ( data.filter ) {
+				switch ( taskFilter ) {
 					case "pending":
 						return !task.done;
 

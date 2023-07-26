@@ -30,24 +30,30 @@
 						</cfif>
 
 						<div class="d-flex align-items-center mt-4">
-							<h4 class="flex-fill m-0">Tasks (#args.computed.taskCounter()#)</h4>
+							<h4 class="flex-fill m-0">Tasks</h4>
 
 							<ul class="nav nav-underline flex-fill justify-content-end">
 								<li class="nav-item">
-									<a class="nav-link <cfif args.filter eq "">active</cfif>" wire:click.prevent="filterTask( '' )" href="##">All</a>
+									<a class="nav-link <cfif args.filter eq "">active</cfif>" wire:click.prevent="filterTask( '' )" href="##">
+										All (#args.computed.taskCounter()#)
+									</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link <cfif args.filter eq "pending">active</cfif>" wire:click.prevent="filterTask( 'pending' )" href="##">Pending</a>
+									<a class="nav-link <cfif args.filter eq "pending">active</cfif>" wire:click.prevent="filterTask( 'pending' )" href="##">
+										Pending (#args.computed.taskCounter( 'pending' )#)
+									</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link <cfif args.filter eq "done">active</cfif>" wire:click.prevent="filterTask( 'done' )" href="##">Done</a>
+									<a class="nav-link <cfif args.filter eq "done">active</cfif>" wire:click.prevent="filterTask( 'done' )" href="##">
+										Done (#args.computed.taskCounter( 'done' )#)
+									</a>
 								</li>
 							</ul>
 						</div>
 
 						<cfif ArrayLen( args.tasks )>
 							<div class="list-group mt-3">
-								<cfloop array="#args.computed.taskFilter()#" index="task">
+								<cfloop array="#args.computed.taskFilter( args.filter )#" index="task">
 									#wire( "Task", { "task": task } )#
 								</cfloop>
 							</div>
