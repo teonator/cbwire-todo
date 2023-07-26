@@ -34,10 +34,10 @@
 
 							<ul class="nav nav-underline flex-fill justify-content-end">
 								<li class="nav-item">
-									<a class="nav-link" wire:click.prevent="filterTask( 'pending' )" href="##">Pending</a>
+									<a class="nav-link <cfif args.filter eq "pending">active</cfif>" wire:click.prevent="filterTask( 'pending' )" href="##">Pending</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" wire:click.prevent="filterTask( 'done' )" href="##">Done</a>
+									<a class="nav-link <cfif args.filter eq "done">active</cfif>" wire:click.prevent="filterTask( 'done' )" href="##">Done</a>
 								</li>
 							</ul>
 						</div>
