@@ -6,6 +6,7 @@ component extends="cbwire.models.Component" {
 		  "hydrated": false
 		, "tasks"   : []
 		, "task"    : ""
+		, "filter"  : ""
 	};
 
 	computed = {
@@ -22,6 +23,12 @@ component extends="cbwire.models.Component" {
 	constraints = {
 		 "task": { required: true, requiredMessage="Please enter the {field}." }
 	};
+
+	queryString = [ "filter" ];
+
+	function onMount( event ) {
+		data.filter = event.getValue( "filter", "" );
+	}
 
 	function onHydrate( event, rc, prc, parameters ) {
 		data.hydrated = true;
@@ -51,6 +58,12 @@ component extends="cbwire.models.Component" {
 
 	function deleteTask( taskId ) {
 		ArrayDeleteAt( data.tasks, _getTaskIndex( taskId ) );
+
+		data.hydrated = false;
+	}
+
+	function filterTask( taskFilter ) {
+		data.filter = taskFilter;
 
 		data.hydrated = false;
 	}
