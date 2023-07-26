@@ -31,11 +31,15 @@
 
 						<h4 class="mt-4">Tasks (#args.computed.taskCounter()#)</h4>
 
-						<div class="list-group">
-							<cfloop array="#args.tasks#" index="task">
-								#wire( "Task", { "task": task } )#
-							</cfloop>
-						</div>
+						<cfif ArrayLen( args.tasks )>
+							<div class="list-group">
+								<cfloop array="#args.tasks#" index="task">
+									#wire( "Task", { "task": task } )#
+								</cfloop>
+							</div>
+						<cfelse>
+							<p class="mt-4 text-center">Hooray! You don't have any pending task.</p>
+						</cfif>
 
 					</div>
 				</div>
