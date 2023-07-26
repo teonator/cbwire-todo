@@ -10,9 +10,23 @@ component extends="cbwire.models.Component" {
 	};
 
 	computed = {
-		"taskCounter": function() {
+		  "taskCounter": function() {
 			return ArrayLen( data.tasks );
-		}
+		  }
+		, "taskFilter": function() {
+			return ArrayFilter( data.tasks, function( task ) {
+				switch ( data.filter ) {
+					case "pending":
+						return !task.done;
+
+					case "done":
+						return task.done;
+
+					default:
+						return true;
+				}
+			} );
+		  }
 	};
 
 	listeners = {
