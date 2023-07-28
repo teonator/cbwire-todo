@@ -58,7 +58,7 @@ component extends="cbwire.models.Component" {
 				, "done" : false
 			} );
 
-			data.task = "";
+			reset( "task" );
 		}
 	}
 
