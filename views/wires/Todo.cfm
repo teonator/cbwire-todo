@@ -58,7 +58,7 @@
 								</cfloop>
 							</div>
 						<cfelse>
-							<p class="mt-4 text-center">Hooray! You don't have any pending task.</p>
+							<p class="mt-4 text-center">Hooray! You don't have any #args.filter# task.</p>
 						</cfif>
 
 					</div>
